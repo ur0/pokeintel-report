@@ -24,5 +24,5 @@ func EncountersHandler(w http.ResponseWriter, r *http.Request) {
 
 	go db.StoreEncounters(req.Encounters)
 
-  w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusCreated)
 }
