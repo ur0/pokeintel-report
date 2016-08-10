@@ -1,0 +1,20 @@
+hash: 127f9fd1141fb91b7e5cd10c9eb4af6065fa35b2db0eaccd0d0f65b20569eba6
+updated: 2016-08-10T19:19:16.591374604+05:30
+imports:
+- name: github.com/gorilla/context
+  version: aed02d124ae4a0e94fea4541c8effd05bf0c8296
+- name: github.com/gorilla/mux
+  version: 0eeaf8392f5b04950925b8a69fe70f110fa7cbfc
+- name: github.com/influxdata/influxdb
+  version: 3c124036f0aea8e7f7b4dde76bdda5052bc58333
+  subpackages:
+  - client/v2
+  - models
+  - pkg/escape
+- name: github.com/Sirupsen/logrus
+  version: 4b6ea7319e214d98c938f12692336f7ca9348d6b
+- name: golang.org/x/sys
+  version: a646d33e2ee3172a661fc09bca23bb4889a41bc8
+  subpackages:
+  - unix
+testImports: []
