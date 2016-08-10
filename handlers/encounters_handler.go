@@ -1,26 +1,28 @@
 package handlers
 
-import(
-  "github.com/ur0/pokeintel-report/models"
-  "net/http"
-  "encoding/json"
-  "fmt"
-  "io/ioutil"
+import (
+	"encoding/json"
+	"github.com/ur0/pokeintel-report/db"
+	"github.com/ur0/pokeintel-report/models"
+	"io/ioutil"
+	"net/http"
 )
 
-type EncountersRequest struct {
-  Encounters []models.Encounter
+type encountersRequest struct {
+	Encounters []models.Encounter
 }
 
 func EncountersHandler(w http.ResponseWriter, r *http.Request) {
-  req := EncountersRequest{}
-  body, _ := ioutil.ReadAll(r.Body)
+	req := encountersRequest{}
+	body, _ := ioutil.ReadAll(r.Body)
 
-  err := json.Unmarshal(body, &req)
+	err := json.Unmarshal(body, &req)
 
-  if err != nil {
-    w.WriteHeader(http.StatusBadRequest)
-  }
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+	}
 
-  //TODO: Store
+	go db.StoreEncounters(req.Encounters)
+
+  w.WriteHeader(http.StatusCreated)
 }

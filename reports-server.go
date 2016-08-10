@@ -2,6 +2,7 @@ package main
 
 import (
 	log "github.com/Sirupsen/logrus"
+	"github.com/ur0/pokeintel-report/db"
 	"github.com/ur0/pokeintel-report/router"
 	"net/http"
 	"time"
@@ -15,5 +16,6 @@ func main() {
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
 	}
+	db.Connect()
 	log.Fatal(srv.ListenAndServe())
 }
