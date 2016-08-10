@@ -22,7 +22,7 @@ func EncountersHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 	}
 
-	go db.StoreEncounters(req.Encounters)
+	go db.StoreEncounters(&req.Encounters)
 
 	w.WriteHeader(http.StatusCreated)
 }

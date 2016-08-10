@@ -8,13 +8,13 @@ import (
 	"time"
 )
 
-func StoreEncounters(encounters []models.Encounter) {
+func StoreEncounters(encounters *[]models.Encounter) {
 	bp, _ := client.NewBatchPoints(client.BatchPointsConfig{
 		Database:  "PokeIntel",
 		Precision: "s",
 	})
 
-	for _, encounter := range encounters {
+	for _, encounter := range *encounters {
 		tags := map[string]string{"pokemon_id": fmt.Sprint(encounter.PokemonId)}
 
 		fields := map[string]interface{}{
@@ -29,5 +29,5 @@ func StoreEncounters(encounters []models.Encounter) {
 	}
 
 	Client.Write(bp)
-	log.WithFields(log.Fields{"package": "db", "action": "StoreEncounters", "status": "success", "count": len(encounters)}).Info("Stored encounters")
+	log.WithFields(log.Fields{"package": "db", "action": "StoreEncounters", "status": "success", "count": len(*encounters)}).Info("Stored encounters")
 }
